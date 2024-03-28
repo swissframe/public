@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<!-- DON'T EDIT THIS FILE - AUTO-GENERATED CONTENT - Thursday, 28 March 2024 10:18 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>VentilationControl - v0.11.1.2</title>
+  <style>
+      a,
+      a:visited,
+      a:active,
+      a:focus,
+      a:hover {
+          color: #00e;
+      }
+
+      code {
+          white-space: pre;
+      }
+
+      body,
+      table {
+          margin: 0;
+          padding: 0;
+          font-family: serif;
+      }
+
+      table {
+          border-collapse: collapse;
+          min-height: 100vh;
+          min-width: 100vw;
+      }
+
+      td {
+          padding: 0.5rem;
+      }
+
+      td#title {
+          top: 1px;
+          left: 1px;
+          z-index: 1000;
+          text-align: center;
+          font-size: 2rem;
+          font-weight: bold;
+          cursor: pointer;
+      }
+
+      td.state {
+          top: 1px;
+          z-index: 100;
+          vertical-align: top;
+          overflow: hidden;
+          cursor: pointer;
+      }
+
+      td.state > div.ref {
+          position: absolute;
+          left: -50vw;
+          height: 0;
+          display: block;
+          top: -1px;
+          width: 100vw;
+      }
+
+      td.state > div.state {
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+      }
+
+      td.clause {
+          left: 1px;
+          z-index: 100;
+          padding-left: 0;
+      }
+
+      td.clause > div.inner {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+      }
+
+      td.clause > div.inner > div.index {
+          font-size: 2rem;
+          font-weight: bold;
+          text-align: center;
+          flex-basis: 4rem;
+          width: 4rem;
+          flex-grow: 0;
+          flex-shrink: 0;
+      }
+
+      td#title,
+      td.state,
+      td.clause {
+          position: sticky;
+          background: #fff;
+          border: none;
+          outline: 1px solid #000;
+      }
+
+      td.transition {
+          position: relative;
+          z-index: 10;
+          border: 1px solid #000;
+      }
+
+      td.transition > div.actions {
+          margin-bottom: 0.5rem;
+      }
+
+      td.transition > div.transition {
+          font-size: 0.75rem;
+          font-family: sans-serif;
+      }
+
+      td.transition.empty,
+      tr.active:hover > td.transition.empty.active {
+          background: #eee;
+      }
+
+      td.transition.empty.inactive {
+          background: #fbfbfb !important;
+      }
+
+      tr.active:hover > td.clause,
+      tr.active:hover > td.transition.active {
+          background: #fcf8a9;
+      }
+      tr.active:hover > td.transition.inactive {
+          background: #fcfbe0;
+      }
+  </style>
+</head>
+<body>
+<table><tr><td id="title">VentilationControl</td><td class="state"><div id="a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal" class="ref"></div><div class="state">Normal</div><div class="updates"><code>IVentilationControlService.SetTargetVolumesByLevel(MostRecentNormalLevel);</code></div></td><td class="state"><div id="a95b5fe6-bfe9-3f09-8d78-d9987660fe41-CrossVentilation" class="ref"></div><div class="state">CrossVentilation</div><div class="updates"><code>IVentilationControlService.SetTargetVolumes(
+  IVentilationControlConfiguration.CrossVentilationInletVolume,
+  IVentilationControlConfiguration.CrossVentilationExhaustVolume);</code></div></td><td class="state"><div id="a95b5fe6-bfe9-3f09-8d78-d9987660fe41-BurstVentilation" class="ref"></div><div class="state">BurstVentilation</div><div class="updates"><code>IVentilationControlService.SetTargetVolumes(
+  IVentilationControlConfiguration.BurstVentilationInletVolume,
+  IVentilationControlConfiguration.BurstVentilationExhaustVolume);</code></div></td><td class="state"><div id="a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate" class="ref"></div><div class="state">Automate</div><div class="updates"><code>IVentilationControlService.SetTargetVolumes(
+  IVentilationControlConfiguration.AutomateInletVolume,
+  IVentilationControlConfiguration.AutomateExhaustVolume);</code></div></td><td class="state"><div id="a95b5fe6-bfe9-3f09-8d78-d9987660fe41-FreshAirRaised" class="ref"></div><div class="state">FreshAirRaised</div><div class="updates"><code>IVentilationControlService.SetTargetVolumes(
+  IVentilationControlConfiguration.FreshAirRaisedInletVolume,
+  IVentilationControlConfiguration.FreshAirRaisedExhaustVolume);</code></div></td><td class="state"><div id="a95b5fe6-bfe9-3f09-8d78-d9987660fe41-FreshAirReduced" class="ref"></div><div class="state">FreshAirReduced</div><div class="updates"><code>IVentilationControlService.SetTargetVolumes(
+  IVentilationControlConfiguration.FreshAirReducedInletVolume,
+  IVentilationControlConfiguration.FreshAirReducedExhaustVolume);</code></div></td><td class="state"><div id="a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel2" class="ref"></div><div class="state">HeatPumpControlRequestLevel2</div><div class="updates"><code>IVentilationControlService.SetTargetVolumesByHeatPumpRequest(
+  VentilationLevelRequest.Level2,
+  MostRecentNormalLevel,
+  InletAirHeatPumpRequest);</code></div></td><td class="state"><div id="a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel3" class="ref"></div><div class="state">HeatPumpControlRequestLevel3</div><div class="updates"><code>IVentilationControlService.SetTargetVolumesByHeatPumpRequest(
+  VentilationLevelRequest.Level3,
+  MostRecentNormalLevel,
+  InletAirHeatPumpRequest);</code></div></td><td class="state"><div id="a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff" class="ref"></div><div class="state">HeatPumpControlRequestDefrostOrDripOff</div><div class="updates"><code>IVentilationControlService.SetTargetVolumesByHeatPumpRequest(
+  VentilationLevelRequest.DefrostOrDripOff,
+  MostRecentNormalLevel,
+  InletAirHeatPumpRequest);</code></div></td><td class="state"><div id="a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff" class="ref"></div><div class="state">VentilationOff</div><div class="updates"><code>IVentilationControlService.SetTargetVolumes(
+  IVentilationControlConfiguration.OffInletVolume,
+  IVentilationControlConfiguration.OffExhaustVolume);</code></div></td><td class="state"><div id="a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationAway" class="ref"></div><div class="state">VentilationAway</div><div class="updates"><code>IVentilationControlService.SetTargetVolumesByLevel(MostRecentNormalLevel);</code></div></td><td class="state"><div id="a95b5fe6-bfe9-3f09-8d78-d9987660fe41-EmergencyOff" class="ref"></div><div class="state">EmergencyOff</div><div class="updates"><code>IVentilationControlService.SetTargetVolumes(0.00, 0.00);</code></div></td></tr><tr><td class="clause"><div class="inner"><div class="index">1</div><div class="clause"><code>IFireAlarmSensor.Read() == true</code></div></div></td><td class="transition"><div class="actions"><code>IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-EmergencyOff">EmergencyOff</a></div></td><td class="transition"><div class="actions"><code>CrossVentilation.StopAndReset();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-EmergencyOff">EmergencyOff</a></div></td><td class="transition"><div class="actions"><code>BurstVentilation.StopAndReset();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-EmergencyOff">EmergencyOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-EmergencyOff">EmergencyOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-EmergencyOff">EmergencyOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-EmergencyOff">EmergencyOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-EmergencyOff">EmergencyOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-EmergencyOff">EmergencyOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-EmergencyOff">EmergencyOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-EmergencyOff">EmergencyOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-EmergencyOff">EmergencyOff</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">2</div><div class="clause"><code>IFanHysteresisService.IsVocOffRequested() == true</code></div></div></td><td class="transition"><div class="actions"><code>IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>CrossVentilation.StopAndReset();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>BurstVentilation.StopAndReset();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">3</div><div class="clause"><code>IVentilationControlService.Level == VentilationLevel.Off</code></div></div></td><td class="transition"><div class="actions"><code>VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>CrossVentilation.StopAndReset();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>BurstVentilation.StopAndReset();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Off);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationOff">VentilationOff</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">4</div><div class="clause"><code>IVentilationControlService.Level == VentilationLevel.Away</code></div></div></td><td class="transition"><div class="actions"><code>VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Away);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationAway">VentilationAway</a></div></td><td class="transition"><div class="actions"><code>CrossVentilation.StopAndReset();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Away);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationAway">VentilationAway</a></div></td><td class="transition"><div class="actions"><code>BurstVentilation.StopAndReset();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Away);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationAway">VentilationAway</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Away);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationAway">VentilationAway</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Away);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationAway">VentilationAway</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Away);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationAway">VentilationAway</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Away);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationAway">VentilationAway</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Away);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationAway">VentilationAway</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Away);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationAway">VentilationAway</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+VentilationOff.Start();
+IVentilationControlService.SetLevel(VentilationLevel.Away);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-VentilationAway">VentilationAway</a></div></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">5</div><div class="clause"><code>IVentilationControlService.Level == VentilationLevel.Cross</code></div></div></td><td class="transition"><div class="actions"><code>CrossVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-CrossVentilation">CrossVentilation</a></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>BurstVentilation.StopAndReset();
+CrossVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-CrossVentilation">CrossVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+CrossVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-CrossVentilation">CrossVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+CrossVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-CrossVentilation">CrossVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+CrossVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-CrossVentilation">CrossVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+CrossVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-CrossVentilation">CrossVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+CrossVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-CrossVentilation">CrossVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+CrossVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-CrossVentilation">CrossVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+CrossVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-CrossVentilation">CrossVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+CrossVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-CrossVentilation">CrossVentilation</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">6</div><div class="clause"><code>IVentilationControlService.Level == VentilationLevel.Burst</code></div></div></td><td class="transition"><div class="actions"><code>BurstVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-BurstVentilation">BurstVentilation</a></div></td><td class="transition"><div class="actions"><code>CrossVentilation.StopAndReset();
+BurstVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-BurstVentilation">BurstVentilation</a></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+BurstVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-BurstVentilation">BurstVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+BurstVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-BurstVentilation">BurstVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+BurstVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-BurstVentilation">BurstVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+BurstVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-BurstVentilation">BurstVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+BurstVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-BurstVentilation">BurstVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+BurstVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-BurstVentilation">BurstVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+BurstVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-BurstVentilation">BurstVentilation</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+BurstVentilation.Start();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-BurstVentilation">BurstVentilation</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">7</div><div class="clause"><code>IVentilationControlService.Level == VentilationLevel.Level1 &amp;&amp;
+MostRecentNormalLevel != VentilationLevel.Level1</code></div></div></td><td class="transition"><div class="actions"><code>MostRecentNormalLevel = VentilationLevel.Level1;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level1;
+InletAirHeatPumpRequest = IVentilationControlConfiguration.NormalLevel1InletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel2">HeatPumpControlRequestLevel2</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level1;
+InletAirHeatPumpRequest = IVentilationControlConfiguration.NormalLevel1InletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel3">HeatPumpControlRequestLevel3</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level1;
+InletAirHeatPumpRequest = IVentilationControlConfiguration.NormalLevel1InletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff">HeatPumpControlRequestDefrostOrDripOff</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">8</div><div class="clause"><code>IVentilationControlService.Level == VentilationLevel.Level1</code></div></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>CrossVentilation.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Level1;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>BurstVentilation.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Level1;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level1;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level1;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level1;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Level1;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Level1;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">9</div><div class="clause"><code>IVentilationControlService.Level == VentilationLevel.Level2 &amp;&amp;
+MostRecentNormalLevel != VentilationLevel.Level2</code></div></div></td><td class="transition"><div class="actions"><code>MostRecentNormalLevel = VentilationLevel.Level2;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level2;
+InletAirHeatPumpRequest = IVentilationControlConfiguration.NormalLevel2InletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel2">HeatPumpControlRequestLevel2</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level2;
+InletAirHeatPumpRequest = IVentilationControlConfiguration.NormalLevel2InletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel3">HeatPumpControlRequestLevel3</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level2;
+InletAirHeatPumpRequest = IVentilationControlConfiguration.NormalLevel2InletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff">HeatPumpControlRequestDefrostOrDripOff</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">10</div><div class="clause"><code>IVentilationControlService.Level == VentilationLevel.Level2</code></div></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>CrossVentilation.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Level2;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>BurstVentilation.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Level2;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level2;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level2;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level2;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Level2;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Level2;
+MostRecentNormalRequest = IVentilationControlConfiguration.NormalLevel2InletVolume;
+InletAirHeatPumpRequest = MostRecentNormalRequest;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">11</div><div class="clause"><code>IVentilationControlService.Level == VentilationLevel.Level3 &amp;&amp;
+MostRecentNormalLevel != VentilationLevel.Level3</code></div></div></td><td class="transition"><div class="actions"><code>MostRecentNormalLevel = VentilationLevel.Level3;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level3;
+InletAirHeatPumpRequest = IVentilationControlConfiguration.NormalLevel3InletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel2">HeatPumpControlRequestLevel2</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level3;
+InletAirHeatPumpRequest = IVentilationControlConfiguration.NormalLevel3InletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel3">HeatPumpControlRequestLevel3</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level3;
+InletAirHeatPumpRequest = IVentilationControlConfiguration.NormalLevel3InletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff">HeatPumpControlRequestDefrostOrDripOff</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">12</div><div class="clause"><code>IVentilationControlService.Level == VentilationLevel.Level3</code></div></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>CrossVentilation.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Level3;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>BurstVentilation.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Level3;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level3;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level3;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Level3;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Level3;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Level3;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">13</div><div class="clause"><code>IVentilationControlService.Level == VentilationLevel.Auto &amp;&amp;
+MostRecentNormalLevel != VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Auto;
+InletAirHeatPumpRequest = IVentilationControlConfiguration.AutomateInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel2">HeatPumpControlRequestLevel2</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Auto;
+InletAirHeatPumpRequest = IVentilationControlConfiguration.AutomateInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel3">HeatPumpControlRequestLevel3</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+MostRecentNormalLevel = VentilationLevel.Auto;
+InletAirHeatPumpRequest = IVentilationControlConfiguration.AutomateInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff">HeatPumpControlRequestDefrostOrDripOff</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">14</div><div class="clause"><code>IVentilationControlService.Level == VentilationLevel.Auto</code></div></div></td><td class="transition"><div class="actions"><code>MostRecentNormalLevel = VentilationLevel.Auto;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition"><div class="actions"><code>CrossVentilation.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Auto;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition"><div class="actions"><code>BurstVentilation.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Auto;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Auto;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+MostRecentNormalLevel = VentilationLevel.Auto;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">15</div><div class="clause"><code>IFanHysteresisService.IsFreshAirReducedRequested() == true</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code></code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-FreshAirReduced">FreshAirReduced</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">16</div><div class="clause"><code>IFanHysteresisService.IsFreshAirRaisedRequested() == true</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code></code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-FreshAirRaised">FreshAirRaised</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">17</div><div class="clause"><code>IVentilationControlService.LevelRequest == VentilationLevelRequest.Level2</code></div></div></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlService.GetInletTargetVolumeByLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel2">HeatPumpControlRequestLevel2</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+InletAirHeatPumpRequest = IVentilationControlConfiguration.AutomateInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel2">HeatPumpControlRequestLevel2</a></div></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlConfiguration.FreshAirRaisedInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel2">HeatPumpControlRequestLevel2</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code></code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel2">HeatPumpControlRequestLevel2</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">18</div><div class="clause"><code>IVentilationControlService.LevelRequest == VentilationLevelRequest.Level3</code></div></div></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlService.GetInletTargetVolumeByLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel3">HeatPumpControlRequestLevel3</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+InletAirHeatPumpRequest = IVentilationControlConfiguration.AutomateInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel3">HeatPumpControlRequestLevel3</a></div></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlConfiguration.FreshAirRaisedInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel3">HeatPumpControlRequestLevel3</a></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code></code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel3">HeatPumpControlRequestLevel3</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">19</div><div class="clause"><code>IVentilationControlService.LevelRequest != VentilationLevelRequest.Level2 &amp;&amp;
+MostRecentNormalLevel == VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">20</div><div class="clause"><code>IVentilationControlService.LevelRequest != VentilationLevelRequest.Level2 &amp;&amp;
+MostRecentNormalLevel != VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">21</div><div class="clause"><code>IVentilationControlService.LevelRequest != VentilationLevelRequest.Level3 &amp;&amp;
+MostRecentNormalLevel == VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">22</div><div class="clause"><code>IVentilationControlService.LevelRequest != VentilationLevelRequest.Level3 &amp;&amp;
+MostRecentNormalLevel != VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">23</div><div class="clause"><code>IVentilationControlService.LevelRequest == VentilationLevelRequest.DefrostOrDripOff</code></div></div></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlService.GetInletTargetVolumeByLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff">HeatPumpControlRequestDefrostOrDripOff</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+InletAirHeatPumpRequest = IVentilationControlConfiguration.AutomateInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff">HeatPumpControlRequestDefrostOrDripOff</a></div></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlConfiguration.FreshAirRaisedInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff">HeatPumpControlRequestDefrostOrDripOff</a></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code></code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff">HeatPumpControlRequestDefrostOrDripOff</a></div></td><td class="transition"><div class="actions"><code></code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff">HeatPumpControlRequestDefrostOrDripOff</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">24</div><div class="clause"><code>IVentilationControlService.LevelRequest != VentilationLevelRequest.DefrostOrDripOff &amp;&amp;
+MostRecentNormalLevel == VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">25</div><div class="clause"><code>IVentilationControlService.LevelRequest != VentilationLevelRequest.DefrostOrDripOff &amp;&amp;
+MostRecentNormalLevel != VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">26</div><div class="clause"><code>CrossVentilation.ElapsedTime() &gt; IVentilationControlConfiguration.CrossVentilationMaximumDuration &amp;&amp;
+MostRecentNormalLevel == VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>CrossVentilation.StopAndReset();
+IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">27</div><div class="clause"><code>CrossVentilation.ElapsedTime() &gt; IVentilationControlConfiguration.CrossVentilationMaximumDuration &amp;&amp;
+MostRecentNormalLevel != VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>CrossVentilation.StopAndReset();
+IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">28</div><div class="clause"><code>BurstVentilation.ElapsedTime() &gt; IVentilationControlConfiguration.BurstVentilationMaximumDuration &amp;&amp;
+MostRecentNormalLevel == VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>BurstVentilation.StopAndReset();
+IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">29</div><div class="clause"><code>BurstVentilation.ElapsedTime() &gt; IVentilationControlConfiguration.BurstVentilationMaximumDuration &amp;&amp;
+MostRecentNormalLevel != VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>BurstVentilation.StopAndReset();
+IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">30</div><div class="clause"><code>IFanHysteresisService.IsFreshAirRaisedRequested() != true</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">31</div><div class="clause"><code>IFanHysteresisService.IsFreshAirReducedRequested() != true</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">32</div><div class="clause"><code>MostRecentNormalLevel == VentilationLevel.Auto &amp;&amp;
+IFanHysteresisService.IsFreshAirReducedRequested() == true</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlConfiguration.FreshAirReducedInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel2">HeatPumpControlRequestLevel2</a></div></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlConfiguration.FreshAirReducedInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel3">HeatPumpControlRequestLevel3</a></div></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlConfiguration.FreshAirReducedInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff">HeatPumpControlRequestDefrostOrDripOff</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">33</div><div class="clause"><code>MostRecentNormalLevel == VentilationLevel.Auto &amp;&amp;
+IFanHysteresisService.IsFreshAirRaisedRequested() == true</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlConfiguration.FreshAirRaisedInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel2">HeatPumpControlRequestLevel2</a></div></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlConfiguration.FreshAirRaisedInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel3">HeatPumpControlRequestLevel3</a></div></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlConfiguration.FreshAirRaisedInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff">HeatPumpControlRequestDefrostOrDripOff</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">34</div><div class="clause"><code>MostRecentNormalLevel == VentilationLevel.Auto &amp;&amp;
+IFanHysteresisService.IsFreshAirRaisedRequested() == false &amp;&amp;
+IFanHysteresisService.IsFreshAirRaisedRequested() == false</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlConfiguration.AutomateInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel2">HeatPumpControlRequestLevel2</a></div></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlConfiguration.AutomateInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestLevel3">HeatPumpControlRequestLevel3</a></div></td><td class="transition"><div class="actions"><code>InletAirHeatPumpRequest = IVentilationControlConfiguration.AutomateInletVolume;</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-HeatPumpControlRequestDefrostOrDripOff">HeatPumpControlRequestDefrostOrDripOff</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">35</div><div class="clause"><code>VentilationOff.ElapsedTime() &gt; IVentilationControlConfiguration.OffMaximumDuration &amp;&amp;
+MostRecentNormalLevel == VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">36</div><div class="clause"><code>VentilationOff.ElapsedTime() &gt; IVentilationControlConfiguration.OffMaximumDuration &amp;&amp;
+MostRecentNormalLevel != VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">37</div><div class="clause"><code>VentilationOff.ElapsedTime() == 0:00:00 &amp;&amp;
+IFanHysteresisService.IsVocOffRequested() == false &amp;&amp;
+MostRecentNormalLevel == VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">38</div><div class="clause"><code>VentilationOff.ElapsedTime() == 0:00:00 &amp;&amp;
+IFanHysteresisService.IsVocOffRequested() == false &amp;&amp;
+MostRecentNormalLevel != VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">39</div><div class="clause"><code>VentilationOff.ElapsedTime() &gt; IVentilationControlService.GetAwayUntil() &amp;&amp;
+MostRecentNormalLevel == VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">40</div><div class="clause"><code>VentilationOff.ElapsedTime() &gt; IVentilationControlService.GetAwayUntil() &amp;&amp;
+MostRecentNormalLevel != VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+VentilationOff.StopAndReset();
+IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">41</div><div class="clause"><code>VentilationOff.ElapsedTime() == 0:00:00 &amp;&amp; MostRecentNormalLevel == VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">42</div><div class="clause"><code>VentilationOff.ElapsedTime() == 0:00:00 &amp;&amp; MostRecentNormalLevel != VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IFanHysteresisService.Clear();
+IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">43</div><div class="clause"><code>IFireAlarmSensor.Read() == false &amp;&amp; MostRecentNormalLevel == VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Automate">Automate</a></div></td></tr><tr><td class="clause"><div class="inner"><div class="index">44</div><div class="clause"><code>IFireAlarmSensor.Read() == false &amp;&amp; MostRecentNormalLevel != VentilationLevel.Auto</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IVentilationControlService.SetLevel(MostRecentNormalLevel);</code></div><div class="transition">Go to <a href="#a95b5fe6-bfe9-3f09-8d78-d9987660fe41-Normal">Normal</a></div></td></tr></table>
+  <script>
+      const findState = state => {
+          const ref = document.getElementById(state);
+
+          if(!ref) {
+              return -1;
+          }
+
+          const stateNode = ref.parentNode;
+          const stateNodes = stateNode.parentNode.children;
+
+          return Array.prototype.indexOf.call(stateNodes, stateNode);
+      };
+
+      const updateState = () => {
+          const currentState = window.location.hash.substring(1);
+          const index = findState(currentState);
+          const rows = document.querySelectorAll('tr');
+          const opacity = 0.25;
+
+          for(let y=0;y < rows.length;y++) {
+              const row = rows[y];
+              const cols = row.children;
+              let skip = false;
+
+              for(let x=1;x < cols.length;x++) {
+                  const cell = cols[x];
+
+                  if(x === index && !skip) {
+                      skip = cell.classList.contains('empty');
+                  }
+
+                  cell.classList.toggle('active', index === -1 || x === index);
+                  cell.classList.toggle('inactive', index > 0 && x !== index);
+
+                  for(const elem of cell.children) {
+                      elem.style.opacity = index === -1 || x === index ? 1 : opacity;
+                  }
+              }
+
+              if(y > 0) {
+                  const clause = row.firstChild.firstChild;
+
+                  clause.style.opacity = skip ? opacity : 1;
+
+                  row.classList.toggle('active', !skip);
+                  row.classList.toggle('inactive', skip);
+              }
+          }
+      };
+
+      document.querySelectorAll('td.state').forEach(state => {
+          const hash = state.querySelector('div.ref');
+
+          state.onclick = () => window.location.hash = '#' + hash.id;
+      });
+
+      const title = document.querySelector('td#title')
+
+      title.onclick = () => window.location.hash = '';
+
+      window.addEventListener('load', updateState);
+      window.addEventListener('popstate', updateState);
+      window.addEventListener('pushstate', updateState);
+  </script>
+</body>
+</html>

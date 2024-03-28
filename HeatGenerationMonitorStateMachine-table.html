@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!-- DON'T EDIT THIS FILE - AUTO-GENERATED CONTENT - Thursday, 28 March 2024 10:18 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>HeatGenerationMonitor - v0.11.1.2</title>
+  <style>
+      a,
+      a:visited,
+      a:active,
+      a:focus,
+      a:hover {
+          color: #00e;
+      }
+
+      code {
+          white-space: pre;
+      }
+
+      body,
+      table {
+          margin: 0;
+          padding: 0;
+          font-family: serif;
+      }
+
+      table {
+          border-collapse: collapse;
+          min-height: 100vh;
+          min-width: 100vw;
+      }
+
+      td {
+          padding: 0.5rem;
+      }
+
+      td#title {
+          top: 1px;
+          left: 1px;
+          z-index: 1000;
+          text-align: center;
+          font-size: 2rem;
+          font-weight: bold;
+          cursor: pointer;
+      }
+
+      td.state {
+          top: 1px;
+          z-index: 100;
+          vertical-align: top;
+          overflow: hidden;
+          cursor: pointer;
+      }
+
+      td.state > div.ref {
+          position: absolute;
+          left: -50vw;
+          height: 0;
+          display: block;
+          top: -1px;
+          width: 100vw;
+      }
+
+      td.state > div.state {
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+      }
+
+      td.clause {
+          left: 1px;
+          z-index: 100;
+          padding-left: 0;
+      }
+
+      td.clause > div.inner {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+      }
+
+      td.clause > div.inner > div.index {
+          font-size: 2rem;
+          font-weight: bold;
+          text-align: center;
+          flex-basis: 4rem;
+          width: 4rem;
+          flex-grow: 0;
+          flex-shrink: 0;
+      }
+
+      td#title,
+      td.state,
+      td.clause {
+          position: sticky;
+          background: #fff;
+          border: none;
+          outline: 1px solid #000;
+      }
+
+      td.transition {
+          position: relative;
+          z-index: 10;
+          border: 1px solid #000;
+      }
+
+      td.transition > div.actions {
+          margin-bottom: 0.5rem;
+      }
+
+      td.transition > div.transition {
+          font-size: 0.75rem;
+          font-family: sans-serif;
+      }
+
+      td.transition.empty,
+      tr.active:hover > td.transition.empty.active {
+          background: #eee;
+      }
+
+      td.transition.empty.inactive {
+          background: #fbfbfb !important;
+      }
+
+      tr.active:hover > td.clause,
+      tr.active:hover > td.transition.active {
+          background: #fcf8a9;
+      }
+      tr.active:hover > td.transition.inactive {
+          background: #fcfbe0;
+      }
+  </style>
+</head>
+<body>
+<table><tr><td id="title">HeatGenerationMonitor</td><td class="state"><div id="b9feff6d-4a98-3727-9d4d-0411695f6123-Idle" class="ref"></div><div class="state">Idle</div><div class="updates"><code>PauseCount = IHeatGenerationPauseMonitorStateMachine.IsRequestingPauseCountReset == true ? 0 : PauseCount;</code></div></td><td class="state"><div id="b9feff6d-4a98-3727-9d4d-0411695f6123-Active" class="ref"></div><div class="state">Active</div><div class="updates"><code>PauseCount = IHeatGenerationPauseMonitorStateMachine.IsRequestingPauseCountReset == true ? 0 : PauseCount;</code></div></td><td class="state"><div id="b9feff6d-4a98-3727-9d4d-0411695f6123-Critical" class="ref"></div><div class="state">Critical</div><div class="updates"><code>PauseCount = IHeatGenerationPauseMonitorStateMachine.IsRequestingPauseCountReset == true ? 0 : PauseCount;</code></div></td><td class="state"><div id="b9feff6d-4a98-3727-9d4d-0411695f6123-Pause" class="ref"></div><div class="state">Pause</div><div class="updates"><code></code></div></td><td class="state"><div id="b9feff6d-4a98-3727-9d4d-0411695f6123-Malfunction" class="ref"></div><div class="state">Malfunction</div><div class="updates"><code>PauseCount = IHeatGenerationPauseMonitorStateMachine.IsRequestingPauseCountReset == true ? 0 : PauseCount;</code></div></td></tr><tr><td class="clause"><div class="inner"><div class="index">1</div><div class="clause"><code>IHeatPumpControlStateMachine.IsRequestingHeatPumpMonitoring == true</code></div></div></td><td class="transition"><div class="actions"><code>CriticalMeasurementCount = 0;
+MeasurementInterval.Start();</code></div><div class="transition">Go to <a href="#b9feff6d-4a98-3727-9d4d-0411695f6123-Active">Active</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">2</div><div class="clause"><code>IHeatPumpControlStateMachine.IsRequestingHeatPumpMonitoring == false ||
+IPressostatControlStateMachine.IsRequestingHeatPumpMonitoringStop == true</code></div></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>CriticalMeasurementCount = 0;
+MeasurementInterval.StopAndReset();</code></div><div class="transition">Go to <a href="#b9feff6d-4a98-3727-9d4d-0411695f6123-Idle">Idle</a></div></td><td class="transition"><div class="actions"><code>CriticalMeasurementCount = 0;
+MeasurementInterval.StopAndReset();</code></div><div class="transition">Go to <a href="#b9feff6d-4a98-3727-9d4d-0411695f6123-Idle">Idle</a></div></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">3</div><div class="clause"><code>CriticalMeasurementCount &gt;= IHeatGenerationMonitorConfiguration.MaximumCriticalMeasurementCount</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>PauseCount++;
+MeasurementInterval.StopAndReset();
+Pause.Start();
+IsRequestingPause = true;</code></div><div class="transition">Go to <a href="#b9feff6d-4a98-3727-9d4d-0411695f6123-Pause">Pause</a></div></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">4</div><div class="clause"><code>MeasurementInterval.ElapsedTime() &gt; IHeatGenerationMonitorConfiguration.CriticalMeasurementInterval &amp;&amp;
+IReservoirTemperatureSensor.GetDifferencePerHour() &gt;=
+  IHeatGenerationMonitorConfiguration.MinimumTemperatureIncreasePerHour</code></div></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>MeasurementInterval.StopAndReset();
+MeasurementInterval.Start();</code></div><div class="transition">Go to <a href="#b9feff6d-4a98-3727-9d4d-0411695f6123-Active">Active</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">5</div><div class="clause"><code>MeasurementInterval.ElapsedTime() &gt; IHeatGenerationMonitorConfiguration.CriticalMeasurementInterval &amp;&amp;
+IReservoirTemperatureSensor.GetDifferencePerHour() &lt;
+  IHeatGenerationMonitorConfiguration.MinimumTemperatureIncreasePerHour</code></div></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>CriticalMeasurementCount = 1;
+MeasurementInterval.StopAndReset();
+MeasurementInterval.Start();</code></div><div class="transition">Go to <a href="#b9feff6d-4a98-3727-9d4d-0411695f6123-Critical">Critical</a></div></td><td class="transition"><div class="actions"><code>CriticalMeasurementCount++;
+MeasurementInterval.StopAndReset();
+MeasurementInterval.Start();</code></div><div class="transition">Go to <a href="#b9feff6d-4a98-3727-9d4d-0411695f6123-Critical">Critical</a></div></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">6</div><div class="clause"><code>IHeatGenerationPauseMonitorStateMachine.IsDetectingMalfunction == true</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>Pause.StopAndReset();
+IsRequestingPause = false;</code></div><div class="transition">Go to <a href="#b9feff6d-4a98-3727-9d4d-0411695f6123-Malfunction">Malfunction</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">7</div><div class="clause"><code>Pause.ElapsedTime() &gt; IHeatGenerationMonitorConfiguration.MaximumPauseDuration</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>CriticalMeasurementCount = 0;
+Pause.StopAndReset();
+IsRequestingPause = false;</code></div><div class="transition">Go to <a href="#b9feff6d-4a98-3727-9d4d-0411695f6123-Idle">Idle</a></div></td><td class="transition empty"></td></tr></table>
+  <script>
+      const findState = state => {
+          const ref = document.getElementById(state);
+
+          if(!ref) {
+              return -1;
+          }
+
+          const stateNode = ref.parentNode;
+          const stateNodes = stateNode.parentNode.children;
+
+          return Array.prototype.indexOf.call(stateNodes, stateNode);
+      };
+
+      const updateState = () => {
+          const currentState = window.location.hash.substring(1);
+          const index = findState(currentState);
+          const rows = document.querySelectorAll('tr');
+          const opacity = 0.25;
+
+          for(let y=0;y < rows.length;y++) {
+              const row = rows[y];
+              const cols = row.children;
+              let skip = false;
+
+              for(let x=1;x < cols.length;x++) {
+                  const cell = cols[x];
+
+                  if(x === index && !skip) {
+                      skip = cell.classList.contains('empty');
+                  }
+
+                  cell.classList.toggle('active', index === -1 || x === index);
+                  cell.classList.toggle('inactive', index > 0 && x !== index);
+
+                  for(const elem of cell.children) {
+                      elem.style.opacity = index === -1 || x === index ? 1 : opacity;
+                  }
+              }
+
+              if(y > 0) {
+                  const clause = row.firstChild.firstChild;
+
+                  clause.style.opacity = skip ? opacity : 1;
+
+                  row.classList.toggle('active', !skip);
+                  row.classList.toggle('inactive', skip);
+              }
+          }
+      };
+
+      document.querySelectorAll('td.state').forEach(state => {
+          const hash = state.querySelector('div.ref');
+
+          state.onclick = () => window.location.hash = '#' + hash.id;
+      });
+
+      const title = document.querySelector('td#title')
+
+      title.onclick = () => window.location.hash = '';
+
+      window.addEventListener('load', updateState);
+      window.addEventListener('popstate', updateState);
+      window.addEventListener('pushstate', updateState);
+  </script>
+</body>
+</html>

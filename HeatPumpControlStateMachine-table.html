@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!-- DON'T EDIT THIS FILE - AUTO-GENERATED CONTENT - Thursday, 28 March 2024 10:18 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>HeatPumpControl - v0.11.1.2</title>
+  <style>
+      a,
+      a:visited,
+      a:active,
+      a:focus,
+      a:hover {
+          color: #00e;
+      }
+
+      code {
+          white-space: pre;
+      }
+
+      body,
+      table {
+          margin: 0;
+          padding: 0;
+          font-family: serif;
+      }
+
+      table {
+          border-collapse: collapse;
+          min-height: 100vh;
+          min-width: 100vw;
+      }
+
+      td {
+          padding: 0.5rem;
+      }
+
+      td#title {
+          top: 1px;
+          left: 1px;
+          z-index: 1000;
+          text-align: center;
+          font-size: 2rem;
+          font-weight: bold;
+          cursor: pointer;
+      }
+
+      td.state {
+          top: 1px;
+          z-index: 100;
+          vertical-align: top;
+          overflow: hidden;
+          cursor: pointer;
+      }
+
+      td.state > div.ref {
+          position: absolute;
+          left: -50vw;
+          height: 0;
+          display: block;
+          top: -1px;
+          width: 100vw;
+      }
+
+      td.state > div.state {
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+      }
+
+      td.clause {
+          left: 1px;
+          z-index: 100;
+          padding-left: 0;
+      }
+
+      td.clause > div.inner {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+      }
+
+      td.clause > div.inner > div.index {
+          font-size: 2rem;
+          font-weight: bold;
+          text-align: center;
+          flex-basis: 4rem;
+          width: 4rem;
+          flex-grow: 0;
+          flex-shrink: 0;
+      }
+
+      td#title,
+      td.state,
+      td.clause {
+          position: sticky;
+          background: #fff;
+          border: none;
+          outline: 1px solid #000;
+      }
+
+      td.transition {
+          position: relative;
+          z-index: 10;
+          border: 1px solid #000;
+      }
+
+      td.transition > div.actions {
+          margin-bottom: 0.5rem;
+      }
+
+      td.transition > div.transition {
+          font-size: 0.75rem;
+          font-family: sans-serif;
+      }
+
+      td.transition.empty,
+      tr.active:hover > td.transition.empty.active {
+          background: #eee;
+      }
+
+      td.transition.empty.inactive {
+          background: #fbfbfb !important;
+      }
+
+      tr.active:hover > td.clause,
+      tr.active:hover > td.transition.active {
+          background: #fcf8a9;
+      }
+      tr.active:hover > td.transition.inactive {
+          background: #fcfbe0;
+      }
+  </style>
+</head>
+<body>
+<table><tr><td id="title">HeatPumpControl</td><td class="state"><div id="22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Idle" class="ref"></div><div class="state">Idle</div><div class="updates"><code>IVentilationControlService.SetVentilationMonitoringStart(false);
+ICompressorActuator.Off();
+IExpansionValveControlStateMachine.Close();
+IReservoirTemperatureRangeService.UpdateTemperatureRange();</code></div></td><td class="state"><div id="22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Normal" class="ref"></div><div class="state">Normal</div><div class="updates"><code>IVentilationControlService.SetVentilationMonitoringStart(false);
+ICompressorActuator.On();
+IExpansionValveControlStateMachine.Open();
+IReservoirTemperatureRangeService.UpdateTemperatureRange();</code></div></td><td class="state"><div id="22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Pause" class="ref"></div><div class="state">Pause</div><div class="updates"><code>IVentilationControlService.SetVentilationMonitoringStart(false);
+ICompressorActuator.Off();
+IExpansionValveControlStateMachine.Close();
+IReservoirTemperatureRangeService.UpdateTemperatureRange();</code></div></td><td class="state"><div id="22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Critical1" class="ref"></div><div class="state">Critical1</div><div class="updates"><code>IVentilationControlService.SetVentilationMonitoringStart(false);
+ICompressorActuator.On();
+IExpansionValveControlStateMachine.Open();
+IReservoirTemperatureRangeService.UpdateTemperatureRange();</code></div></td><td class="state"><div id="22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Critical2" class="ref"></div><div class="state">Critical2</div><div class="updates"><code>IVentilationControlService.SetVentilationMonitoringStart(false);
+ICompressorActuator.On();
+IExpansionValveControlStateMachine.Open();
+IReservoirTemperatureRangeService.UpdateTemperatureRange();</code></div></td><td class="state"><div id="22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Critical3" class="ref"></div><div class="state">Critical3</div><div class="updates"><code>IVentilationControlService.SetVentilationMonitoringStart(false);
+ICompressorActuator.On();
+IExpansionValveControlStateMachine.Open();
+IReservoirTemperatureRangeService.UpdateTemperatureRange();</code></div></td><td class="state"><div id="22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Defrost" class="ref"></div><div class="state">Defrost</div><div class="updates"><code>IVentilationControlService.SetVentilationMonitoringStart(false);
+ICompressorActuator.Off();
+IExpansionValveControlStateMachine.Close();
+IReservoirTemperatureRangeService.UpdateTemperatureRange();</code></div></td><td class="state"><div id="22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-DripOff" class="ref"></div><div class="state">DripOff</div><div class="updates"><code>IVentilationControlService.SetVentilationMonitoringStart(false);
+ICompressorActuator.Off();
+IExpansionValveControlStateMachine.Close();
+IReservoirTemperatureRangeService.UpdateTemperatureRange();</code></div></td><td class="state"><div id="22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Malfunction" class="ref"></div><div class="state">Malfunction</div><div class="updates"><code>IVentilationControlService.SetVentilationMonitoringStart(false);
+ICompressorActuator.Off();
+IExpansionValveControlStateMachine.Close();
+IReservoirTemperatureRangeService.UpdateTemperatureRange();</code></div></td></tr><tr><td class="clause"><div class="inner"><div class="index">1</div><div class="clause"><code>IPressostatControlStateMachine.Malfunction == true</code></div></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Malfunction">Malfunction</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Malfunction">Malfunction</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Malfunction">Malfunction</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Malfunction">Malfunction</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Malfunction">Malfunction</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Malfunction">Malfunction</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Malfunction">Malfunction</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Malfunction">Malfunction</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">2</div><div class="clause"><code>IPressostatControlStateMachine.IsRequestingHeatPumpPause == true ||
+IVentilationMonitorStateMachine.IsRequestingPause == true ||
+IHeatGenerationMonitorStateMachine.IsRequestingPause == true ||
+IVentilationControlService.AwayUntil &gt; DateTime.Now ||
+IHeatPumpControlService.HeatPumpStatus == HeatPumpStatusRequest.Pause</code></div></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.None);
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Pause">Pause</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.None);
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Pause">Pause</a></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.None);
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Pause">Pause</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.None);
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Pause">Pause</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.None);
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Pause">Pause</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.None);
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Pause">Pause</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+DripOff.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.None);
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Pause">Pause</a></div></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">3</div><div class="clause"><code>IPressostatControlStateMachine.IsRequestingHeatPumpPause == false &amp;&amp;
+IVentilationMonitorStateMachine.IsRequestingPause == false &amp;&amp;
+IHeatGenerationMonitorStateMachine.IsRequestingPause == false &amp;&amp;
+IVentilationControlService.AwayUntil &lt;= DateTime.Now &amp;&amp;
+IHeatPumpControlService.HeatPumpStatus != HeatPumpStatusRequest.Pause</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IsRequestingHeatPumpMonitoring = true;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">4</div><div class="clause"><code>IReservoirTemperatureSensor.Read() &gt; IReservoirTemperatureRangeService.GetMaximumTemperature() &amp;&amp;
+IHeatPumpControlService.HeatPumpStatus != HeatPumpStatusRequest.Normal</code></div></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Idle">Idle</a></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Idle">Idle</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Idle">Idle</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Idle">Idle</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">5</div><div class="clause"><code>IReservoirTemperatureSensor.Read() &lt;= IReservoirTemperatureRangeService.GetMaximumTemperature() &amp;&amp;
+IEvaporatorTemperatureSensor.Read() &lt; IHeatPumpControlConfiguration.EvaporatorTemperatureCritical1</code></div></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IsRequestingHeatPumpMonitoring = true;
+Critical1.Start();</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Critical1">Critical1</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">6</div><div class="clause"><code>IHeatPumpControlService.HeatPumpStatus != HeatPumpStatusRequest.Normal</code></div></div></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IsRequestingHeatPumpMonitoring = true;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">7</div><div class="clause"><code>IReservoirTemperatureSensor.Read() &lt; IReservoirTemperatureRangeService.GetMinimumTemperature() &amp;&amp;
+IEvaporatorTemperatureSensor.Read() &lt; IHeatPumpControlConfiguration.EvaporatorTemperatureCritical1</code></div></div></td><td class="transition"><div class="actions"><code>IsRequestingHeatPumpMonitoring = true;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Critical1">Critical1</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">8</div><div class="clause"><code>IHeatPumpControlService.HeatPumpStatus == HeatPumpStatusRequest.Normal</code></div></div></td><td class="transition"><div class="actions"><code>IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>IsRequestingHeatPumpMonitoring = false;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">9</div><div class="clause"><code>IReservoirTemperatureSensor.Read() &lt; IReservoirTemperatureRangeService.GetMinimumTemperature() &amp;&amp;
+IEvaporatorTemperatureSensor.Read() &gt;= IHeatPumpControlConfiguration.EvaporatorTemperatureCritical1</code></div></div></td><td class="transition"><div class="actions"><code>IsRequestingHeatPumpMonitoring = true;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">10</div><div class="clause"><code>IReservoirTemperatureSensor.Read() &gt; IReservoirTemperatureRangeService.GetMaximumTemperature() &amp;&amp;
+IEvaporatorTemperatureSensor.Read() &gt;= IHeatPumpControlConfiguration.EvaporatorTemperatureCritical1</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.None);</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Normal">Normal</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.None);</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Normal">Normal</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">11</div><div class="clause"><code>IEvaporatorTemperatureSensor.Read() &lt; IHeatPumpControlConfiguration.EvaporatorTemperatureCritical2</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>Critical2.Start();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.Level2);</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Critical2">Critical2</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">12</div><div class="clause"><code>Critical1.ElapsedTime() &gt; IHeatPumpControlConfiguration.Critical1MaximumDuration</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.DefrostOrDripOff);
+IsRequestingHeatPumpMonitoring = false;
+IVentilationControlService.SetVentilationMonitoringStart(true);</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Defrost">Defrost</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">13</div><div class="clause"><code>IEvaporatorTemperatureSensor.Read() &gt; IHeatPumpControlConfiguration.EvaporatorTemperatureCritical2</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.Level2);</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Critical2">Critical2</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">14</div><div class="clause"><code>IEvaporatorTemperatureSensor.Read() &lt;= IHeatPumpControlConfiguration.EvaporatorTemperatureMinimum ||
+Critical1.ElapsedTime() &gt; IHeatPumpControlConfiguration.Critical1MaximumDuration ||
+Critical2.ElapsedTime() &gt; IHeatPumpControlConfiguration.Critical2MaximumDuration</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.DefrostOrDripOff);
+IsRequestingHeatPumpMonitoring = false;
+IVentilationControlService.SetVentilationMonitoringStart(true);</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Defrost">Defrost</a></div></td><td class="transition"><div class="actions"><code>Critical1.StopAndReset();
+Critical2.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.DefrostOrDripOff);
+IsRequestingHeatPumpMonitoring = false;
+IVentilationControlService.SetVentilationMonitoringStart(true);</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Defrost">Defrost</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">15</div><div class="clause"><code>IEvaporatorTemperatureSensor.Read() &lt;= IHeatPumpControlConfiguration.EvaporatorTemperatureCritical3</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.Level3);</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Critical3">Critical3</a></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">16</div><div class="clause"><code>IEvaporatorTemperatureSensor.Read() &gt; IHeatPumpControlConfiguration.EvaporatorTemperatureNormal</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>DripOff.Start();</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-DripOff">DripOff</a></div></td><td class="transition empty"></td><td class="transition empty"></td></tr><tr><td class="clause"><div class="inner"><div class="index">17</div><div class="clause"><code>DripOff.ElapsedTime() &gt; IHeatPumpControlConfiguration.DripOffDuration</code></div></div></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition empty"></td><td class="transition"><div class="actions"><code>DripOff.StopAndReset();
+IVentilationControlService.SetVentilationLevelRequest(VentilationLevelRequest.None);
+IsRequestingHeatPumpMonitoring = true;</code></div><div class="transition">Go to <a href="#22ba60bc-fc4d-37ac-85f7-33e6a7abfe94-Normal">Normal</a></div></td><td class="transition empty"></td></tr></table>
+  <script>
+      const findState = state => {
+          const ref = document.getElementById(state);
+
+          if(!ref) {
+              return -1;
+          }
+
+          const stateNode = ref.parentNode;
+          const stateNodes = stateNode.parentNode.children;
+
+          return Array.prototype.indexOf.call(stateNodes, stateNode);
+      };
+
+      const updateState = () => {
+          const currentState = window.location.hash.substring(1);
+          const index = findState(currentState);
+          const rows = document.querySelectorAll('tr');
+          const opacity = 0.25;
+
+          for(let y=0;y < rows.length;y++) {
+              const row = rows[y];
+              const cols = row.children;
+              let skip = false;
+
+              for(let x=1;x < cols.length;x++) {
+                  const cell = cols[x];
+
+                  if(x === index && !skip) {
+                      skip = cell.classList.contains('empty');
+                  }
+
+                  cell.classList.toggle('active', index === -1 || x === index);
+                  cell.classList.toggle('inactive', index > 0 && x !== index);
+
+                  for(const elem of cell.children) {
+                      elem.style.opacity = index === -1 || x === index ? 1 : opacity;
+                  }
+              }
+
+              if(y > 0) {
+                  const clause = row.firstChild.firstChild;
+
+                  clause.style.opacity = skip ? opacity : 1;
+
+                  row.classList.toggle('active', !skip);
+                  row.classList.toggle('inactive', skip);
+              }
+          }
+      };
+
+      document.querySelectorAll('td.state').forEach(state => {
+          const hash = state.querySelector('div.ref');
+
+          state.onclick = () => window.location.hash = '#' + hash.id;
+      });
+
+      const title = document.querySelector('td#title')
+
+      title.onclick = () => window.location.hash = '';
+
+      window.addEventListener('load', updateState);
+      window.addEventListener('popstate', updateState);
+      window.addEventListener('pushstate', updateState);
+  </script>
+</body>
+</html>
